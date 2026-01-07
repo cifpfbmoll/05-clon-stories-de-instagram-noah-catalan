@@ -1,154 +1,218 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/n2vQQF73)
-# 📱 Instagram Stories Clone
+# Instagram Stories Clone - Proyecto Final
 
-> **Un clon funcional de Instagram Stories construido con React, TypeScript y LocalStorage**
-
-![React](https://img.shields.io/badge/React-18.2-blue)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue)
-![Vite](https://img.shields.io/badge/Vite-5.0-purple)
-![Tailwind](https://img.shields.io/badge/Tailwind-3.4-cyan)
-
-## 🚀 Demo en Vivo
-
-[Ver Demo](https://maximofernandezriera.github.io/instagram-stories-clone/)
-
-## ✨ Características
-
-- 📸 **Subir imágenes** que se convierten automáticamente a historias
-- ⏰ **Expiración de 24 horas** - Las historias desaparecen automáticamente
-- ⏱️ **Timer de 3 segundos** por historia con barra de progreso
-- 👆 **Gestos táctiles** - Swipe, tap y hold para navegar
-- 💾 **Sin backend** - Todo se guarda en LocalStorage
-- 📱 **100% Responsive** - Funciona en móvil y desktop
-- 🎨 **UI estilo Instagram** - Círculos con gradiente, animaciones fluidas
-
-## 🛠️ Tecnologías
-
-- **Frontend**: React 18 + TypeScript
-- **Build Tool**: Vite
-- **Estilos**: Tailwind CSS
-- **Almacenamiento**: LocalStorage (Browser API)
-- **Procesamiento de Imágenes**: Canvas API + FileReader
-
-## 📦 Instalación
-
-```bash
-# Clonar repositorio
-git clone https://github.com/maximofernandezriera/instagram-stories-clone.git
-cd instagram-stories-clone
-
-# Instalar dependencias
-npm install
-
-# Iniciar servidor de desarrollo
-npm run dev
-```
-
-## 🏗️ Estructura del Proyecto
-
-```
-src/
-├── components/          # Componentes UI
-│   ├── StoryList.tsx   # Lista horizontal de historias
-│   ├── StoryViewer.tsx # Visor fullscreen
-│   └── ProgressBar.tsx # Barras de progreso animadas
-├── hooks/              # Custom Hooks
-│   ├── useStories.ts   # Gestión de historias
-│   └── useStoryViewer.ts # Control del visor
-├── utils/              # Utilidades
-│   ├── storage.ts      # LocalStorage + expiración
-│   └── imageUtils.ts   # Procesamiento de imágenes
-└── types/              # Tipos TypeScript
-```
-
-## 📚 Documentación
-
-### Para Desarrolladores Junior
-
-- 📖 **[CLASE MAGISTRAL](docs/CLASE_MAGISTRAL.md)** - Tutorial completo paso a paso
-- 📝 **[Bitácora de Desarrollo](docs/bitacora.md)** - Proceso de desarrollo detallado
-
-### Conceptos Clave Explicados
-
-1. **FileReader API** - Cómo convertir archivos a Base64
-2. **Canvas API** - Redimensionar y comprimir imágenes
-3. **LocalStorage** - Persistencia sin backend
-4. **React Hooks** - useState, useEffect, useCallback, useRef
-5. **Gestión de Timers** - Sincronización de animaciones
-6. **Detección de Gestos** - Touch events y swipe
-
-## 🎮 Cómo Usar
-
-### Subir una Historia
-1. Click en el botón "+" 
-2. Selecciona una imagen
-3. La imagen se procesa y aparece en la lista
-
-### Ver Historias
-- **Click** en cualquier historia para verla
-- **Tap izquierdo** (25% pantalla): Historia anterior
-- **Tap derecho** (75% pantalla): Historia siguiente
-- **Swipe horizontal**: Navegar entre historias
-- **Mantener presionado**: Pausar historia
-- **Teclas ←/→**: Navegar (desktop)
-- **ESC**: Cerrar visor
-
-## 🔧 Configuración Técnica
-
-### Límites
-- **Tamaño máximo imagen**: 1080x1920px (se redimensiona automáticamente)
-- **Almacenamiento**: ~5MB (límite de LocalStorage)
-- **Duración historia**: 24 horas
-- **Timer por historia**: 3 segundos
-
-### Optimizaciones
-- Compresión JPEG al 85%
-- Redimensionado automático
-- Limpieza automática de historias expiradas
-- Animaciones a 60fps
-
-## 🐛 Problemas Conocidos y Soluciones
-
-### "Las historias no avanzan"
-**Solución aplicada**: Fix de stale closure en `useStoryViewer` usando refs
-
-### "Storage lleno"
-**Solución**: Las imágenes se comprimen automáticamente. Límite ~25 historias
-
-### "Memory leaks"
-**Solución**: Limpieza de timers en cleanup de useEffect
-
-## 🚀 Deploy
-
-### GitHub Pages
-```bash
-npm run build
-gh pages deploy dist
-```
-
-### Vercel/Netlify
-Compatible con deploy automático desde GitHub
-
-## 📄 Licencia
-
-MIT - Proyecto educativo de código abierto
-
-## 🤝 Contribuciones
-
-¡Las contribuciones son bienvenidas! 
-
-1. Fork el proyecto
-2. Crea tu feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add: nueva característica'`)
-4. Push a la branch (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
-
-## 📧 Contacto
-
-Máximo Fernández Riera - [GitHub](https://github.com/maximofernandezriera)
+**Desarrollado por:** Noah Catalán Rosell  
+**Fecha:** Diciembre 2025  
+**Curso:** Desarrollo Web
 
 ---
 
-⭐ **Si te gustó este proyecto, dale una estrella!**
+## 📱 ¿Qué es este proyecto?
 
-🎓 **Perfecto para aprender**: React, TypeScript, APIs del navegador, y más.
+Hola! Soy Noah Catalán y este es mi proyecto de clon de Instagram Stories. Básicamente he creado una aplicación web que funciona como las historias de Instagram: puedes subir fotos, verlas en pantalla completa, y se borran solas después de 24 horas.
+
+Lo mejor de todo es que funciona completamente en el navegador, sin necesidad de un servidor o base de datos externa. Todo se guarda en el LocalStorage del navegador.
+
+---
+
+## 🚀 Cómo levantar la aplicación
+
+### Requisitos previos
+- Tener Node.js instalado (yo usé la versión 18)
+- npm (viene con Node.js)
+
+### Pasos para ejecutar:
+
+1. **Abrir la terminal** en la carpeta del proyecto
+
+2. **Instalar dependencias:**
+   ```bash
+   npm install
+   ```
+   Esto descarga todas las librerías necesarias (React, TypeScript, Tailwind, etc.)
+
+3. **Iniciar el servidor de desarrollo:**
+   ```bash
+   npm run dev
+   ```
+
+4. **Abrir el navegador:**
+   - Ve a `http://localhost:5173/`
+   - ¡Ya está funcionando!
+
+### Para crear la versión de producción:
+```bash
+npm run build
+```
+Esto genera los archivos optimizados en la carpeta `dist/`
+
+---
+
+## 🎨 Cambios que realicé
+
+### Diseño Visual Moderno
+
+**Header renovado:**
+- Puse un gradiente de fondo sutil (de gris oscuro a negro)
+- El título "Stories" tiene un degradado de colores (púrpura → rosa → naranja) con un emoji
+- Añadí mi nombre "Noah Catalán Rosell" en la esquina superior derecha, pequeñito pero visible
+
+**Feed actualizado:**
+- Las tarjetas ahora tienen bordes semi-transparentes y sombras suaves
+- Los avatares tienen gradientes con animación de "pulse"
+- Todo está centrado con un ancho máximo para mejor visualización
+- Las esquinas son más redondeadas (más moderno)
+- Efectos hover más elegantes
+
+**Fondo general:**
+- Gradiente diagonal que da sensación de profundidad
+- Colores oscuros para que las historias destaquen
+
+### Funcionalidades implementadas
+
+✅ **Subir historias:** Haces clic en el botón "+", seleccionas una imagen y aparece al instante  
+✅ **Ver historias:** Click en cualquier círculo y se abre en pantalla completa  
+✅ **Navegación intuitiva:**
+   - Click derecho → siguiente historia
+   - Click izquierdo → historia anterior
+   - Mantener presionado → pausar
+   - Flechas del teclado ← → para navegar
+   - Escape para cerrar
+
+✅ **Barra de progreso:** Indica cuánto falta para que pase a la siguiente (3 segundos cada una)  
+✅ **Expiración automática:** Las historias se borran solas después de 24 horas  
+✅ **Responsive:** Funciona tanto en móvil como en ordenador
+
+---
+
+## 🛠️ Tecnologías que usé
+
+### React + TypeScript
+La base de todo. React me permite crear componentes reutilizables y TypeScript me ayuda a evitar errores con los tipos de datos.
+
+### Vite
+Es como el "motor" que ejecuta la aplicación en desarrollo y la compila para producción. Es súper rápido comparado con otras herramientas.
+
+### Tailwind CSS
+Para los estilos. En vez de escribir CSS tradicional, uso clases tipo `bg-black` o `rounded-full`. Al principio es raro pero luego es muy rápido.
+
+### LocalStorage (API del navegador)
+Aquí guardo las historias. Es como una "caja" en el navegador donde puedo guardar texto. Convierto las imágenes a Base64 (un texto larguísimo) y las guardo ahí.
+
+### FileReader y Canvas (APIs del navegador)
+- **FileReader:** Para leer las imágenes que sube el usuario
+- **Canvas:** Para hacer las imágenes más pequeñas y que no se llene el almacenamiento
+
+---
+
+## 📂 Estructura del proyecto
+
+```
+instagram-stories-clone/
+├── src/
+│   ├── components/          # Componentes visuales
+│   │   ├── StoryList.tsx   # Lista de círculos de historias
+│   │   ├── StoryViewer.tsx # Pantalla completa para ver historias
+│   │   ├── StoryCircle.tsx # Cada círculo individual
+│   │   ├── ProgressBar.tsx # Barra de progreso
+│   │   └── AddStoryButton.tsx # Botón para subir historias
+│   │
+│   ├── hooks/              # Lógica reutilizable
+│   │   ├── useStories.ts   # Maneja las historias (agregar, cargar, borrar)
+│   │   └── useStoryViewer.ts # Maneja el visor (navegación, timers)
+│   │
+│   ├── utils/              # Funciones auxiliares
+│   │   ├── storage.ts      # Guardar/leer del LocalStorage
+│   │   └── imageUtils.ts   # Procesar y comprimir imágenes
+│   │
+│   ├── types/              # Definiciones de TypeScript
+│   │   └── index.ts
+│   │
+│   ├── App.tsx             # Componente principal
+│   └── main.tsx            # Punto de entrada
+│
+├── package.json            # Dependencias y scripts
+└── vite.config.ts          # Configuración de Vite
+```
+
+---
+
+## 💡 Lo que aprendí
+
+### 1. React Hooks
+Los hooks como `useState`, `useEffect`, `useCallback` y `useRef` son raros al principio, pero son muy potentes. El más complicado fue `useRef` para evitar problemas con los temporizadores.
+
+### 2. Manejo de archivos en el navegador
+Aprendí a usar `FileReader` para leer imágenes y `Canvas` para redimensionarlas. Fue complicado pero funciona bien.
+
+### 3. LocalStorage tiene límites
+Solo puedes guardar unos 5MB de datos. Por eso tengo que comprimir las imágenes antes de guardarlas.
+
+### 4. Temporizadores en React
+Usar `setTimeout` y `setInterval` en React es complicado porque tienes que limpiarlos bien. Si no, se crean "memory leaks" (pérdidas de memoria).
+
+### 5. TypeScript vale la pena
+Al principio me quejaba de tener que poner tipos a todo, pero me ahorró muchos errores tontos.
+
+---
+
+## 🎯 Problemas que resolví
+
+**Problema:** Las historias no avanzaban automáticamente  
+**Solución:** Usar `useRef` en vez de `useState` para ciertos valores
+
+**Problema:** El LocalStorage se llenaba muy rápido  
+**Solución:** Comprimir las imágenes a 1080x1920px máximo y calidad 85%
+
+**Problema:** Los temporizadores seguían corriendo aunque cerrara el visor  
+**Solución:** Limpiar los timers en el `return` del `useEffect`
+
+**Problema:** Los gestos táctiles no funcionaban bien  
+**Solución:** Calcular la distancia del swipe y solo contar como swipe si es mayor a 50px
+
+---
+
+## 🎥 Video de Presentación
+
+A continuación puedes ver una demostración del proyecto funcionando:
+
+![Captura de pantalla 1](./Captura1.png)
+![Captura de pantalla 2](./Captura2.png)
+
+> **Nota:** Si el video no se visualiza, puedes encontrarlo en el archivo `video-presentacion.mp4` en la raíz del proyecto.
+
+---
+
+## ✨ Características destacadas
+
+- 📸 **Sin backend:** Todo funciona en el navegador
+- ⏰ **24 horas:** Las historias expiran automáticamente
+- 🎨 **Diseño moderno:** Gradientes, animaciones, efectos
+- 👆 **Gestos intuitivos:** Tap, swipe, mantener presionado
+- 📱 **Responsive:** Funciona en móvil y desktop
+- ⚡ **Rápido:** Vite hace que todo sea instantáneo
+- 🔒 **Type-safe:** TypeScript previene errores
+
+---
+
+## 🚀 ¿Qué podría mejorar?
+
+Si tuviera más tiempo, añadiría:
+- Soporte para videos (ahora solo imágenes)
+- Filtros y stickers
+- Sistema de múltiples usuarios
+- Backend real para sincronizar entre dispositivos
+- Respuestas a historias
+
+---
+
+## 📝 Conclusión
+
+Este proyecto me enseñó muchísimo sobre React, TypeScript y las APIs del navegador. Al principio parecía imposible hacer algo tan complejo sin backend, pero dividiendo el problema en partes pequeñas lo conseguí.
+
+Lo más importante que aprendí es que cuando algo parece muy difícil, solo hay que dividirlo en problemas más pequeños y resolverlos uno por uno.
+
+---
+
+**Noah Catalán Rosell**  
+Instagram Stories Clone  
+Diciembre 2025
