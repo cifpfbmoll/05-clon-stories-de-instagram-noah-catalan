@@ -1,4 +1,4 @@
-# Instagram Stories Clone - Proyecto Final
+# Instagram Stories Clone
 
 **Desarrollado por:** Noah Catalán Rosell  
 **Fecha:** Diciembre 2025  
@@ -8,7 +8,7 @@
 
 ## 📱 ¿Qué es este proyecto?
 
-Hola! Soy Noah Catalán y este es mi proyecto de clon de Instagram Stories. Básicamente he creado una aplicación web que funciona como las historias de Instagram: puedes subir fotos, verlas en pantalla completa, y se borran solas después de 24 horas.
+Básicamente he creado una aplicación web que funciona como las historias de Instagram: puedes subir fotos, verlas en pantalla completa, y se borran solas después de 24 horas.
 
 Lo mejor de todo es que funciona completamente en el navegador, sin necesidad de un servidor o base de datos externa. Todo se guarda en el LocalStorage del navegador.
 
